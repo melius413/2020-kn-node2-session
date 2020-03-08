@@ -2,10 +2,10 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv').config();
-const cookieParser = require('cookie-parser');
-const redis = require('redis');
+const cookieParser = require('cookie-parser'); // 세션에 관련됨
+const redis = require('redis'); // 세션에 관련됨
 const logger = require('morgan');
-const session = require('express-session');
+const session = require('express-session'); // 세션에 관련됨
 const redisStore = require('connect-redis')(session);
 const methodOverride = require('method-override');
 // const sessionStore = require('session-file-store')(session);
@@ -19,7 +19,7 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.locals.pretty = true;
+app.locals.pretty = true; // locals를 퍼그에서 사용하는 전역변수임
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -54,7 +54,8 @@ app.use(methodOverride((req, res) => {
 app.use("/", express.static(path.join(__dirname, 'public')));
 app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 
-app.use(/^(?!\/user).+/, (req, res, next) => {
+// /user* 를 제외한 모든 접근
+app.use(/^(?!\/user).+/, (req, res, next) => { // USER가 아닌것(정규식)은 다 해당
 	console.log("BASE: ", req.baseUrl);
 	if(req.session.userid) next();
 	else res.redirect('/user/login');

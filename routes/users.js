@@ -49,9 +49,13 @@ router.post("/loginModule", async (req, res, next) => {
   let value = [userid, userpw];
   let result = await connect.execute(sql, value);
   if(result[0][0]) {
+    // req, res, next는 모든 매소드가 사용가능하므로, 세션정보를 req에 넣음
+    // 해당 세션정보는 메모리에 저장되나, db설정을 하면 db에 저장됨.
+    // 분산처리를 위해서 다른 PC에 공유를 위해서 필수
     req.session.userid = result[0][0].userid;
     req.session.username = result[0][0].username;
     req.session.grade = result[0][0].grade;
+    // locals 퍼그가 쓰는 전역번수임. app 속성은????
     req.app.locals.userid = req.session.userid;
     req.app.locals.username = req.session.username;
     req.app.locals.grade = req.session.grade;
