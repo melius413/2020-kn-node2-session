@@ -1,0 +1,41 @@
+클라식하게 부동산 정보 개시판 만들기
+- 로긴 로그아웃, 파일업로드, 글쓰기/수정
+
+암호화
+- bcrypt 가 요즘추세
+- https://www.npmjs.com/package/bcrypt
+
+보안
+- 시퀄문의 인젝션
+- 파일 업로드시 파일형식을 제한하는 필터링 필요하다.
+
+momentjs
+- https://momentjs.com/  >> date처리에 편리
+
+세션
+- https://www.npmjs.com/package/express-session
+- connect-redis A Redis-based session store. (레디스 인기있음)
+- connect-mongo A MongoDB-based session store.
+- 세션을 그냥 메모리에만 두면 분산처리시에 다른 CPU/컴퓨터와 공유가 안됨
+- 분산처리(여러개의 PC/CPU)를 위해서 저장장치(레디스나 몽고)를 써야 공유된다.
+
+레디스 설치
+- 가비아에서도 노드와 레디스 지원 1만원?
+- https://dgkim5360.tistory.com/entry/install-redis-for-linux-or-windows
+- https://github.com/microsoftarchive/redis/releases
+- https://github.com/microsoftarchive/redis/releases/tag/win-3.2.100
+-- 윈도우용 msi 다운
+-- 설치시, path 체크 (패스체크해도 안됨... 왜?)
+-- 기본포트 6379
+-- 설치완료되면 ... C:\Program Files\Redis 로가서 redis-server.exe 직접실행
+-- redis-cli.exe로 접속하면 프롬프트뜨면 정상
+
+passport.js
+- 실무에서 많이 사용
+- 해당모듈은 쿠키사용
+
+기타
+- 9_redis_session 프로젝트에 uploads폴더 만들어야한다.
+- pm2 모듈?
+- 가비아에서도 노드와 레디스지원 함 2만원...
+- sql 관계설정

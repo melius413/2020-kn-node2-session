@@ -22,7 +22,7 @@ $(".bt-rev-file").click(function onRevFile() {
 		var id = $(this).data("id");
 		var file = $(this).data("file");
 		console.log('/board/remove?file='+file+'&id='+id);
-		$.get('/board/remove?file='+file+'&id='+id).then(function(res) {
+		$.get('/board/remove?file='+file+'&id='+id).then(function(res) { // ajax사용, jQuery에서 promise 사용가능
 			if(res.code == 200) {
 				$(".bt-rev-file").parent().remove();
 			}
